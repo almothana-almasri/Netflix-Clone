@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import MovieList from '../MovieList/MovieList'
+import MovieList from '../MovieList/MovieList';
+import './Home.css';
 
 function Home() {
   const [trending, setTrending] = useState([]);
@@ -7,7 +8,7 @@ function Home() {
     const url = process.env.REACT_APP_SERVER_URL
     const response = await fetch(`${url}/trending`);
     const data = await response.json();
-    setTrending(data);
+    setTrending(data.results);
   }
   useEffect(() => {
     getTrendingMovies();
