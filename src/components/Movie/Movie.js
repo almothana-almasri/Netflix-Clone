@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 
 function Movie(props) {
   const [isFavorite, setIsFavorite] = useState(false);
+  
   const handleFavorite = () => {
     setIsFavorite(!isFavorite);
   }
@@ -22,7 +23,7 @@ function Movie(props) {
         </Card.Body>
       </Card>
 
-      <ModalMovie movieData={props.movie} />
+      <ModalMovie movieData={props.movie} commentHandler={props.commentHandler}/>
     </div>
   );
 }
