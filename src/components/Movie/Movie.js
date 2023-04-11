@@ -4,11 +4,15 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
 function Movie(props) {
-  const [isFavorite, setIsFavorite] = useState(false);
+  // const [isFavorite, setIsFavorite] = useState(false);
   
-  const handleFavorite = () => {
-    setIsFavorite(!isFavorite);
-  }
+  // const handleFavorite = () => {
+  //   setIsFavorite(!isFavorite);
+  // }
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <div className="movie-card">
@@ -17,14 +21,14 @@ function Movie(props) {
         <Card.Body>
           <Card.Title>{props.movie.title}</Card.Title>
           <Card.Text>{props.movie.overview}</Card.Text>
-          <Button variant={isFavorite ? "danger" : "primary"} onClick={handleFavorite}>
+          <Button variant="primary" onClick={handleShow}>show details</Button>
+          {/* <Button variant={isFavorite ? "danger" : "primary"} onClick={handleFavorite}>
             {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
-          </Button>
+          </Button> */}
         </Card.Body>
       </Card>
 
-      <ModalMovie movieData={props.movie} commentHandler={props.commentHandler}/>
-    </div>
+      <ModalMovie show={show}  handleClose={handleClose} movieData = {props.movie} commentHandler={props.commentHandler}/>   </div>
   );
 }
 

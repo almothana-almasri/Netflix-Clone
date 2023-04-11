@@ -6,7 +6,7 @@ function MovieList(props) {
       {
         props.movies.map(movie => {
           return (
-            <Movie key={movie.id} movie={movie} />
+            <Movie key={movie.id} movie={movie} commentHandler={props.commentHandler}/>
           )
         })
       }
