@@ -13,14 +13,16 @@ function Home() {
   }
 
   function commentHandler(newMovie, id) {
-    trending.map(movie => {
-      if (movie.id === id) {
-        movie.comment = newMovie.userComment
-        return movie;
-      } else {
-        return movie
-      }
-    })
+    setTrending((prevTrending) =>
+      prevTrending.map((movie) => {
+        if (movie.id === id) {
+          movie.comment = newMovie.userComment;
+          return movie;
+        } else {
+          return movie;
+        }
+      })
+    );
   }
 
   useEffect(() => {
@@ -30,7 +32,7 @@ function Home() {
   return (
     <div className='home-container'>
       <h1>Trending Movies</h1>
-      <MovieList movies={trending} commentHandler={commentHandler} />
+      <MovieList key={"trending"} movies={trending} commentHandler={commentHandler} />
     </div>
   );
 }

@@ -29,10 +29,9 @@ export default function ModalMovie(props) {
       },
       body: JSON.stringify(data),
     })
-    // const receivedData = await response.json();
-    // if (response.status === 201) {
-    //   alert("successfully added to database")
-    // }
+    if (response.status === 201) {
+      alert("successfully added to database")
+    }
   }
 
   return (
