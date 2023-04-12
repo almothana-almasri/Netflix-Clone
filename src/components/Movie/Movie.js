@@ -4,13 +4,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
 function Movie(props) {
-  // const [isFavorite, setIsFavorite] = useState(false);
-  
-  // const handleFavorite = () => {
-  //   setIsFavorite(!isFavorite);
-  // }
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -20,11 +14,8 @@ function Movie(props) {
         <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500/${props.movie.poster_path}`} />
         <Card.Body>
           <Card.Title>{props.movie.title}</Card.Title>
-          <Card.Text>{props.movie.overview}</Card.Text>
+          <Card.Text>{props.movie.overview.substring(0, 100)}</Card.Text>
           <Button variant="primary" onClick={handleShow}>show details</Button>
-          {/* <Button variant={isFavorite ? "danger" : "primary"} onClick={handleFavorite}>
-            {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
-          </Button> */}
         </Card.Body>
       </Card>
 

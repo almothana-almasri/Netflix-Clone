@@ -35,23 +35,24 @@ export default function FavList() {
 
     return (
         <div className='FavList'>
-            <h2> this is Fav Movies Page</h2>
-            {
-                FavList && FavList.map(movie => {
-                    return (
-                        <div className='gg'>
-                        <Card style={{ width: "18rem" }}>
-                            <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
-                            <Card.Body>
-                                <Card.Title>{movie.title}</Card.Title>
-                                <Card.Text>{movie.overview.substring(0, 100)}</Card.Text>
-                                <Button variant="primary" onClick={() => handleDelete(movie.id)}> Delete </Button>
-                            </Card.Body>
-                        </Card>
-                        </div>
-                    )
-                })
-            }
+          <h2> Your Favorite List</h2>
+          <div className="movie-container">
+            {FavList && FavList.map(movie => {
+              return (
+                <div className='gg'>
+                  <Card style={{ width: "18rem" }}>
+                    <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
+                    <Card.Body>
+                      <Card.Title>{movie.title}</Card.Title>
+                      <Card.Text>{movie.overview.substring(0, 100)}</Card.Text>
+                      <Button variant="primary" onClick={() => handleDelete(movie.id)}> Delete </Button>
+                    </Card.Body>
+                  </Card>
+                </div>
+              )
+            })}
+          </div>
         </div>
-    )
+      )
+      
 }
