@@ -13,10 +13,11 @@ export default function ModalMovie(props) {
     let newMovie = { ...props.movieData, userComment }
     props.commentHandler(newMovie, newMovie.id);
   }
-  async function addToFavHandler(e) {
+  async function addToFavHandler(e, movie) {
     e.preventDefault();
     let url = `${process.env.REACT_APP_SERVER_URL}/addMovie`;
     let data = {
+      id: props.movieData.id,
       title: props.movieData.title,
       overview: props.movieData.overview,
       poster_path: `https://image.tmdb.org/t/p/w500/${props.movieData.poster_path}`,
@@ -29,6 +30,7 @@ export default function ModalMovie(props) {
       },
       body: JSON.stringify(data),
     })
+    const receivedData = await response.json();
     if (response.status === 201) {
       alert("successfully added to database")
     }

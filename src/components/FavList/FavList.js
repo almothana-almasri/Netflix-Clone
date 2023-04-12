@@ -29,6 +29,16 @@ export default function FavList() {
             getFavList();
         }
     }
+    async function handleUpdate(id){
+      let url =`${process.env.REACT_APP_SERVER_URL}/UPDATE/${id}`;
+      console.log(url)
+      let response = await fetch(url,{
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+      })      
+  }
     useEffect(() => {
         getFavList();
     }, [])
