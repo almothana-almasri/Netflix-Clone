@@ -8,7 +8,7 @@ export default function FavList() {
 
     async function getFavList() {
         let url = `${process.env.REACT_APP_SERVER_URL}/getMovies`;
-        let response = await fetch(url, {
+        const response = await fetch(url, {
             method: 'GET',
         })
 
@@ -19,7 +19,7 @@ export default function FavList() {
 
     async function handleDelete(id) {
         let url = `${process.env.REACT_APP_SERVER_URL}/DELETE/${id}`;
-        let response = await fetch(url, {
+        const response = await fetch(url, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -32,13 +32,14 @@ export default function FavList() {
     async function handleUpdate(id){
       let url =`${process.env.REACT_APP_SERVER_URL}/UPDATE/${id}`;
       console.log(url)
-      let response = await fetch(url,{
+      await fetch(url,{
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
-      })      
-  }
+      });      
+    }
+
     useEffect(() => {
         getFavList();
     }, [])
@@ -56,6 +57,7 @@ export default function FavList() {
                       <Card.Title>{movie.title}</Card.Title>
                       <Card.Text>{movie.overview.substring(0, 100)}</Card.Text>
                       <Button variant="primary" onClick={() => handleDelete(movie.id)}> Delete </Button>
+                      <Button variant="primary" onClick={() => handleUpdate(movie.id)}> Update </Button>
                     </Card.Body>
                   </Card>
                 </div>
@@ -64,5 +66,4 @@ export default function FavList() {
           </div>
         </div>
       )
-      
 }
