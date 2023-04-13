@@ -1,6 +1,9 @@
-.navbar{
-    background-color: #333;
+h2 {
+    text-align: center;
+}
+.movie-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
+  
